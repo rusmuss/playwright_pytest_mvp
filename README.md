@@ -1,2 +1,2 @@
-# playwright_pytest_mvp
+# Playwright pytest mvp
 playwright pytest template
