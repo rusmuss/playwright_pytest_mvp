@@ -1,0 +1,9 @@
+test.sh
+!playwright_project/deployment/entrypoint.sh
+!playwright_project/deployment/test.sh
+!playwright_project/env/.env.template
+
+!poetry.lock
+!pyproject.toml
+
+#!playwright_project/clients/
