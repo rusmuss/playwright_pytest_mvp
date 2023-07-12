@@ -15,3 +15,5 @@ class TestAuthorization(Auth):
     def test_fail_authorization(self, username, password):
         self.check_title()
         self.check_invalid_creds(user=username, password=password)
+
+

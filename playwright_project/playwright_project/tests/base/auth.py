@@ -24,7 +24,7 @@ class Auth:
     decimal_var: Decimal = None
 
     # fixtures list
-    playwright_page = None
+    app_page = None
 
     # constants
     dict_var = {"var1": 1, "var2": 2}
@@ -35,23 +35,23 @@ class Auth:
     string_template_var = string.Template('This is my transaction "$transaction"')
 
     @pytest.fixture(autouse=True)
-    def before_test(self, playwright_page: Page):
-        self.playwright_page = playwright_page
+    def before_test(self, app_page: Page):
+        self.app_page = app_page
         self.start_test_time = datetime.utcnow()
 
     @pytest.fixture()
-    def after_block(self, playwright_page: Page):
+    def after_block(self, app_page: Page):
         yield
         print("Action after test")
 
     @allure.step("Description for your step Check title")
     def check_title(self):
-        expect(self.playwright_page).to_have_title(re.compile(config.title))
+        expect(self.app_page).to_have_title(re.compile(config.title))
 
     @allure.step("Check invalid authorization")
     def check_invalid_creds(self, user, password):
-        username_element = self.playwright_page.locator('#login_field')
-        password_element = self.playwright_page.locator('#password')
+        username_element = self.app_page.locator('#login_field')
+        password_element = self.app_page.locator('#password')
 
         username_element.clear()
         username_element.type(user)
@@ -59,6 +59,6 @@ class Auth:
         password_element.clear()
         password_element.type(password)
 
-        self.playwright_page.locator(".js-sign-in-button").click()
+        self.app_page.locator(".js-sign-in-button").click()
 
-        expect(self.playwright_page.locator('.js-flash-alert')).to_contain_text('Incorrect username or password')
+        expect(self.app_page.locator('.js-flash-alert')).to_contain_text('Incorrect username or password')
