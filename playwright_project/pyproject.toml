@@ -24,6 +24,7 @@ pytest-rerunfailures = "^10.3"
 beautifulsoup4 = "^4.11.1"
 filelock = "^3.8.0"
 pytest-playwright = "^0.3.3"
+starlette = "^0.28.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -46,7 +46,7 @@ class Auth:
 
     @allure.step("Description for your step Check title")
     def check_title(self):
-        expect(self.app_page).to_have_title(re.compile(config.title))
+        expect(self.app_page).to_have_title(re.compile(config.TITLE))
 
     @allure.step("Check invalid authorization")
     def check_invalid_creds(self, user, password):

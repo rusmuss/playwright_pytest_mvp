@@ -11,14 +11,14 @@ def request_session():
     return requests.Session()
 
 
-@pytest.fixture(scope="function", params=[config.browser_list])
+@pytest.fixture(scope="function", params=[config.BROWSER_LIST])
 def app_page(playwright: Playwright, request) -> Page:
-    browser = playwright[request.param].launch(headless=config.headless)
+    browser = playwright[request.param].launch(headless=config.HEADLESS_MODE)
     context = browser.new_context()
 
     page = context.new_page()
 
-    page.goto(config.url)
+    page.goto(config.SITE_URL)
     yield page
     if request.node.rep_call.failed:
         file_name = f"{request.node.name}{uuid.uuid4()}"
