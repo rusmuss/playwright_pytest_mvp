@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 .pytest_cache
 .python-version
+screenshots/*
