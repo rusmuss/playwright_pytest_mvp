@@ -11,7 +11,7 @@ def request_session():
     return requests.Session()
 
 
-@pytest.fixture(scope="function", params=[config.BROWSER_LIST])
+@pytest.fixture(scope="function", params=config.BROWSER_LIST)
 def app_page(playwright: Playwright, request) -> Page:
     browser = playwright[request.param].launch(headless=config.HEADLESS_MODE)
     context = browser.new_context()

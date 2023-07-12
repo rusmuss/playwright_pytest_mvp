@@ -7,7 +7,7 @@ from allure_commons.types import AttachmentType
 
 from playwright_project import config
 # from time import sleep
-# from pytest_check import check
+from pytest_check import check
 # from functools import partial
 # import json
 
@@ -61,4 +61,6 @@ class Auth:
 
         self.app_page.locator(".js-sign-in-button").click()
 
-        expect(self.app_page.locator('.js-flash-alert')).to_contain_text('Incorrect username or password')
+        check.is_in('Incorrect username or password', self.app_page.locator('.js-flash-alert').text_content())
+
+        # expect(self.app_page.locator('.js-flash-alert')).to_contain_text('Incorrect username or password')
