@@ -2,7 +2,7 @@
 playwright pytest template
 
 
-#### Install pyenv
+Install pyenv
 
 ```
 curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
@@ -25,7 +25,9 @@ sudo apt-get install git
 
 Install python version via pyenv 
 
-`pyenv install -v 3.10.2`
+```
+pyenv install -v 3.10.2
+```
 
 Create project env
 
@@ -56,7 +58,7 @@ poetry run playwright install-deps
 Run tests:
 
 ```
-poetry run pytest playwright_project/tests/*/test_* --alluredir allure-results -n 0 -m "authorization and serial" --disable-warnings
+poetry run pytest -vs playwright_project/tests/*/test_* --alluredir allure-results -n 0 -m "authorization and serial" --disable-warnings
 ```
 
 To see allure results
@@ -67,4 +69,11 @@ npm install -g allure-commandline --save-dev
 
 # run allure report
 allure serve allure-results
+```
+
+
+Run playwright codegen:
+
+```
+poetry run playwright codegen github.com/login
 ```
