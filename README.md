@@ -37,16 +37,20 @@ pip install poetry
 ```
 
 Install poetry project
-
+(in the project dir)
 ``` 
-cd playwright_project
 poetry install
 ```
 
-how to add new package:
+Install all browsers for playwright
 
 ```
-poetry add PACKAGE-NAME
+poetry run playwright install
+```
+
+For linux you also need to install deps:
+```
+poetry run playwright install-deps
 ```
 
 Run tests:

@@ -9,13 +9,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 RUN pip install --no-cache-dir "poetry>=1.0,<2.0.0" \
     && poetry config virtualenvs.create false
 
-COPY playwright_project/deployment/entrypoint.sh /entrypoint.sh
+COPY deployment/entrypoint.sh /entrypoint.sh
 
 WORKDIR /playwright_project/
 COPY poetry.lock pyproject.toml ./
 RUN poetry install --only main
 
-COPY playwright_project/deployment/test.sh test.sh
+COPY deployment/test.sh test.sh
 COPY ./playwright_project/ .
 
 ENTRYPOINT ["/entrypoint.sh" ]
