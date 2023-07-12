@@ -27,3 +27,15 @@ def app_page(playwright: Playwright, request) -> Page:
         allure.attach(screenshot, name=f"{file_name}", attachment_type=allure.attachment_type.PNG)
     page.close()
     browser.close()
+
+
+@pytest.fixture(scope='session')
+def request_session() -> requests.Session:
+    s = requests.Session()
+    s.headers.update(
+        {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*',
+        }
+    )
+    return s
