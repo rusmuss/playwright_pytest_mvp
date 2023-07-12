@@ -48,7 +48,7 @@ class Auth:
     def check_title(self):
         expect(self.app_page).to_have_title(re.compile(config.TITLE))
 
-    @allure.step("Check invalid authorization")
+    @allure.step("Check invalid auth")
     def check_invalid_creds(self, user, password):
         username_element = self.app_page.locator('#login_field')
         password_element = self.app_page.locator('#password')
